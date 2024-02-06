@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledBackground = styled.div`
   background-color: white;
@@ -74,11 +75,21 @@ function Room() {
     <>
       <StyleList>
         <ul>
-          <li>Sport</li>
-          <li>Education</li>
-          <li>Politics</li>
-          <li>Developers</li>
-          <li>Podcast</li>
+          <li>
+            <Link to="/chatArea">Sport</Link>
+          </li>
+          <li>
+            <Link to="/chatArea">Education</Link>
+          </li>
+          <li>
+            <Link to="/chatArea">Politics</Link>
+          </li>
+          <li>
+            <Link to="/chatArea">Developers</Link>
+          </li>
+          <li>
+            <Link to="/chatArea">Podcast</Link>
+          </li>
         </ul>
       </StyleList>
     </>
