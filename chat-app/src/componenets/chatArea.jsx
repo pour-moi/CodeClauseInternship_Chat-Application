@@ -16,7 +16,7 @@ const socket = io.connect("http://localhost:5174");
 
 export function ChatPlace() {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]); // Changed to an array
+  const [messages, setMessages] = useState([]);
 
   const sendMessage = () => {
     socket.emit("send_message", { message });
@@ -24,7 +24,7 @@ export function ChatPlace() {
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessages((messages) => [...messages, data.message]); // Directly push the new message to the messages array
+      setMessages((messages) => [...messages, data.message]);
     });
 
     return () => {
