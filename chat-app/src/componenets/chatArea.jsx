@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import io from "socket.io-client";
+import { useEffect, useState } from "react";
 
 const StyledTextArea = styled.div`
   position: absolute;
@@ -10,15 +12,44 @@ const StyledTextArea = styled.div`
   }
 `;
 
+const socket = io.connect("http://localhost:5174");
+
 export function ChatPlace() {
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]); // Changed to an array
+
+  const sendMessage = () => {
+    socket.emit("send_message", { message });
+  };
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      setMessages((messages) => [...messages, data.message]); // Directly push the new message to the messages array
+    });
+
+    return () => {
+      socket.off("receive_message");
+    };
+  }, [socket]);
+
   return (
     <>
       <button>
         <Link to="/">Back</Link>
       </button>
       <StyledTextArea>
-        <input type="text" placeholder="Message" />
-        <button>Send</button>
+        <h1>Message</h1>
+        {messages.map((message, index) => (
+          <p key={index}>{message}</p>
+        ))}
+        <input
+          type="text"
+          placeholder="Message"
+          onChange={(event) => {
+            setMessage(event.target.value);
+          }}
+        />
+        <button onClick={sendMessage}>Send</button>
       </StyledTextArea>
     </>
   );
