@@ -12,12 +12,16 @@ const StyledTextArea = styled.div`
   }
 `;
 
-const Text = styled.span`
+const Text = styled.div`
+  vr {
+    height: 1em;
+    border-left: 1px solid black;
+  }
   display: flex;
   flex-direction: column;
 `;
 
-const User = styled.p`
+const User = styled.div`
   color: blue;
   margin: 0;
 `;
@@ -55,7 +59,16 @@ export function ChatPlace() {
           <p key={index}>
             <Text>
               <User> {message.username}</User>
-              <br /> {message.message}
+
+              <span
+                style={{
+                  borderLeft: "3px solid green",
+                  borderRadius: "0.2em 0.2em",
+                  paddingLeft: "5px",
+                }}
+              >
+                {message.message}
+              </span>
             </Text>
           </p>
         ))}
