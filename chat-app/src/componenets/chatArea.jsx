@@ -12,19 +12,31 @@ const StyledTextArea = styled.div`
   }
 `;
 
-const socket = io.connect("http://localhost:5174");
+const Text = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
+
+const User = styled.p`
+  color: blue;
+  margin: 0;
+`;
 
 export function ChatPlace() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
+  const socket = io.connect("http://localhost:5174");
+
   const sendMessage = () => {
-    socket.emit("send_message", { message });
+    const username = sessionStorage.getItem("username");
+    socket.emit("send_message", { username, message });
   };
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessages((messages) => [...messages, data.message]);
+      console.log(data);
+      setMessages((messages) => [...messages, data]);
     });
 
     return () => {
@@ -35,12 +47,17 @@ export function ChatPlace() {
   return (
     <>
       <button>
-        <Link to="/">Back</Link>
+        <Link to="/App">Back</Link>
       </button>
       <StyledTextArea>
         <h1>Message</h1>
         {messages.map((message, index) => (
-          <p key={index}>{message}</p>
+          <p key={index}>
+            <Text>
+              <User> {message.username}</User>
+              <br /> {message.message}
+            </Text>
+          </p>
         ))}
         <input
           type="text"
