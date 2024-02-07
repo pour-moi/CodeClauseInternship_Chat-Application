@@ -22,6 +22,9 @@ const Text = styled.div`
 `;
 
 const User = styled.div`
+  font-family: "Helvetica";
+  font-size: 0.9em;
+  font-weight: bold;
   color: blue;
   margin: 0;
 `;
@@ -54,17 +57,16 @@ export function ChatPlace() {
         <Link to="/App">Back</Link>
       </button>
       <StyledTextArea>
-        <h1>Message</h1>
         {messages.map((message, index) => (
           <p key={index}>
             <Text>
               <User> {message.username}</User>
-
               <span
                 style={{
                   borderLeft: "3px solid green",
                   borderRadius: "0.2em 0.2em",
                   paddingLeft: "5px",
+                  fontFamily: "Helvetica",
                 }}
               >
                 {message.message}
