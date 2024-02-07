@@ -71,24 +71,31 @@ function CreateNewRoom() {
 }
 
 function Room() {
+  const paths = {
+    sport: "/chatArea/sport",
+    education: "/chatArea/education",
+    politics: "/chatArea/politics",
+    developers: "/chatArea/developers",
+    podcast: "/chatArea/podcast",
+  };
   return (
     <>
       <StyleList>
         <ul>
           <li>
-            <Link to="/chatArea">Sport</Link>
+            <Link to={paths.sport}>Sport</Link>
           </li>
           <li>
-            <Link to="/chatArea">Education</Link>
+            <Link to={paths.education}>Education</Link>
           </li>
           <li>
-            <Link to="/chatArea">Politics</Link>
+            <Link to={paths.politics}>Politics</Link>
           </li>
           <li>
-            <Link to="/chatArea">Developers</Link>
+            <Link to={paths.developers}>Developers</Link>
           </li>
           <li>
-            <Link to="/chatArea">Podcast</Link>
+            <Link to={paths.podcast}>Podcast</Link>
           </li>
         </ul>
       </StyleList>

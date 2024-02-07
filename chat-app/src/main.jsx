@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "chatArea",
+    path: "chatArea/:category",
     element: <ChatPlace />,
   },
 ]);
