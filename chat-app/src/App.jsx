@@ -3,8 +3,10 @@ import { RoomList } from "./componenets/roomList";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-const StyledHeader = styled.h4`
+const StyledHeader = styled.h2`
   color: white;
+  font-family: "Helvetica";
+  margin-left: 0.5em;
 `;
 
 const GlobalStyle = createGlobalStyle`
