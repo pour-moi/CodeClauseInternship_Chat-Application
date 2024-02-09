@@ -12,6 +12,10 @@ body{
   background-color:rgba(90,149,253,255);
   margin:0;
 }
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/chat-app/fonts/HelveticaNeueLTStd-Roman.otf') format('truetype');
+}
 `;
 
 function App() {

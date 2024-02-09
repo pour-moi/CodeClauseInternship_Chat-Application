@@ -35,9 +35,14 @@ export function ChatPlace() {
 
   const socket = io.connect("http://localhost:5174");
 
+  // const joinRoom = (roomName) => {
+  //   socket.emit("join_room", roomName);
+  // };
+
   const sendMessage = () => {
     const username = sessionStorage.getItem("username");
-    socket.emit("send_message", { username, message });
+    const roomName = "your_room_name"; // Replace with the actual room name
+    socket.emit("send_message", { username, message, room: roomName });
   };
 
   useEffect(() => {

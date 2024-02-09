@@ -1,5 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/chat-app/fonts/HelveticaNeueLTStd-Roman.otf') format('truetype');
+}
+`;
 
 const StyledBackground = styled.div`
   background-color: white;
@@ -37,6 +46,7 @@ const StyleList = styled.div`
   }
   li {
     width: 80vw;
+    font-family: "Helvetica";
   }
   li::before {
     content: "";
@@ -134,6 +144,7 @@ function Room() {
 export function RoomList() {
   return (
     <>
+      <GlobalStyle />
       <StyledBackground>
         <UserChoice>
           <h1>Rooms</h1>
