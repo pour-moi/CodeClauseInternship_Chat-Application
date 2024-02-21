@@ -2,12 +2,24 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
+
 const StyledTextArea = styled.div`
   position: absolute;
   bottom: 0;
   margin-bottom: 0.5em;
   input {
-    width: 20em;
+    min-width: 20em;
+    border-radius: 1em;
+    border: 1px solid black;
+    padding: 0.3em;
+  }
+  input::placeholder {
+    padding-left: 0.3em;
+  }
+  button {
+    border-radius: 1em;
+    border: 1px solid black;
+    margin-left: 0.3em;
   }
 `;
 
