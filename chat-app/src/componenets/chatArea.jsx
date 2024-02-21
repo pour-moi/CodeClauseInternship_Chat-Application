@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
-
 const StyledTextArea = styled.div`
   position: absolute;
   bottom: 0;
@@ -19,30 +18,25 @@ const Text = styled.div`
   }
   display: flex;
   flex-direction: column;
+  font-family: "Helvetica";
 `;
 
 const User = styled.div`
   font-family: "Helvetica";
-  font-size: 0.9em;
   font-weight: bold;
   color: blue;
   margin: 0;
 `;
-
 export function ChatPlace() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   const socket = io.connect("http://localhost:5174");
 
-  // const joinRoom = (roomName) => {
-  //   socket.emit("join_room", roomName);
-  // };
-
   const sendMessage = () => {
     const username = sessionStorage.getItem("username");
-    const roomName = "your_room_name"; // Replace with the actual room name
-    socket.emit("send_message", { username, message, room: roomName });
+    socket.emit("send_message", { username, message });
+    console.log("Logged in user: ", sessionStorage.getItem("username"));
   };
 
   useEffect(() => {
@@ -50,12 +44,10 @@ export function ChatPlace() {
       console.log(data);
       setMessages((messages) => [...messages, data]);
     });
-
     return () => {
       socket.off("receive_message");
     };
   }, [socket]);
-
   return (
     <>
       <button>
@@ -71,7 +63,6 @@ export function ChatPlace() {
                   borderLeft: "3px solid green",
                   borderRadius: "0.2em 0.2em",
                   paddingLeft: "5px",
-                  fontFamily: "Helvetica",
                 }}
               >
                 {message.message}
