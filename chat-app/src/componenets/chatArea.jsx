@@ -34,9 +34,10 @@ export function ChatPlace() {
   const socket = io.connect("http://localhost:5174");
 
   const sendMessage = () => {
+    event.preventDefault();
     const username = sessionStorage.getItem("username");
     socket.emit("send_message", { username, message });
-    console.log("Logged in user: ", sessionStorage.getItem("username"));
+    document.getElementById("messageForm").reset();
   };
 
   useEffect(() => {
@@ -70,14 +71,16 @@ export function ChatPlace() {
             </Text>
           </p>
         ))}
-        <input
-          type="text"
-          placeholder="Message"
-          onChange={(event) => {
-            setMessage(event.target.value);
-          }}
-        />
-        <button onClick={sendMessage}>Send</button>
+        <form id="messageForm" onSubmit={sendMessage}>
+          <input
+            type="text"
+            placeholder="Message"
+            onChange={(event) => {
+              setMessage(event.target.value);
+            }}
+          />
+          <button type="submit">Send</button>{" "}
+        </form>
       </StyledTextArea>
     </>
   );
