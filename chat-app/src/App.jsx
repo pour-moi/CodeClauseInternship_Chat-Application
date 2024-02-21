@@ -16,7 +16,7 @@ body{
 }
 @font-face {
   font-family: 'Helvetica';
-  src: url('/chat-app/fonts/HelveticaNeueLTStd-Roman.otf') format('truetype');
+  src: url('../fonts/HelveticaNeueLTStd-Roman.otf') format('opentype');
 }
 `;
 
