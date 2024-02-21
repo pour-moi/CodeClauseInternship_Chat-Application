@@ -1,14 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-
-@font-face {
-  font-family: 'Helvetica';
-  src: url('/chat-app/fonts/HelveticaNeueLTStd-Roman.otf') format('truetype');
-}
-`;
 
 const StyledBackground = styled.div`
   background-color: white;
@@ -23,16 +14,11 @@ const StyledBackground = styled.div`
 const UserChoice = styled.div`
   display: flex;
   justify-content: center;
-  // gap: 3.3em;
-  // background-color: rgba(220, 232, 254, 255);
+  font-family: "Helvetica";
   height: 3em;
   width: 17em;
   margin-top: 1em;
   border-radius: 2em;
-  // button {
-  //   border-style: none;
-  //   background-color: rgba(220, 232, 254, 255);
-  // }
 `;
 
 const StyleList = styled.div`
@@ -144,10 +130,10 @@ function Room() {
 export function RoomList() {
   return (
     <>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <StyledBackground>
         <UserChoice>
-          <h1>Rooms</h1>
+          <h1>Channels</h1>
         </UserChoice>
         <Room />
         {/* <CreateNewRoom /> */}
